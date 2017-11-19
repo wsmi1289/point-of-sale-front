@@ -8,21 +8,18 @@ class Order extends Component {
     this.state = {
       product: '',
       item: '',
-      products: [],
-      items: []
     }
+    console.log(this.state.line_items)
   }
+  componentDidMount() {
 
+  }
   componentWillReceiveProps(nextProps) {
-    const {products, line_items} = this.props;
-    if (line_items !== nextProps.line_items) {
-      nextProps.line_items.forEach((item)=> {
-        this.Match(item, nextProps.products)
-      })
-    }
-    
-    
-   
+    const {products, line_item} = this.props;
+    console.log(line_item)
+      if (line_item !== nextProps.line_item) {
+        this.Match(nextProps.line_item, nextProps.products)
+      }
   }
   // shouldComponentUpdate(nextProps) {
   //   console.log()
@@ -30,6 +27,7 @@ class Order extends Component {
   //   return diffLine_items
   // }
   Match(item, products) {
+
     products.find((product) => {
       if (product.id === item.data.product_id) {
         let line_items = []
@@ -37,21 +35,24 @@ class Order extends Component {
         this.setState({
           product: product,
           item: item,
-          products: products,
-          items: line_items
         })
       }
     })
   }
   renderLineItem() {
-    const {product, item, products, items} = this.state;
+    const {product, item} = this.state;
+
     if (product !== '' && item !== '') {
-        return (<LineItem item={item} product={product} />)
-      
+      return (<LineItem item={item} product={product} />)
     }
   }
   render() {
-    
+    const {product, item} = this.state;
+    // let line_items = ;
+    // if (this.props.line_items===null) {
+    //   line_items = item
+    // }
+
     return (
 
       <table className="order_table">
@@ -72,12 +73,12 @@ class Order extends Component {
           </tr>
         </thead>
         <tbody>
-        {this.renderLineItem()}
       {
-        /*// this.props.line_items.map((line_item, i) => {
-        this.props.line_items.forEach(() => {
-          
-        })*/
+        // this.props.line_items.map(line_item => {
+         // product !== '' ? <LineItem item={item} product={product} /> : null
+
+        this.renderLineItem()
+        // })
       }
         </tbody>
       </table>

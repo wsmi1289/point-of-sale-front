@@ -52,12 +52,12 @@ class LineItem extends Component {
   // }
   render() {
     return (
-      <tr className="line_item_row">
+      <tr className="line_item_row" >
         <td className="line_item_name">
           {this.props.product.name}
         </td>
         <td className="line_item_amount">
-          {this.props.item.amount}
+          {this.props.item.data.amount}
         </td>
         <td className="line_item_price">
                 ${this.Currency(this.props.product.price)}

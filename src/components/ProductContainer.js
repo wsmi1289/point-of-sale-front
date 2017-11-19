@@ -12,7 +12,8 @@ class ProductContainer extends Component {
     	products: [],
       editingProductId: null,
       currentOrder: null,
-      line_items: []
+      line_item: null,
+      line_items: 0
   	}
 
     // this.addNewProduct = this.addNewProduct.bind(this);
@@ -65,7 +66,7 @@ class ProductContainer extends Component {
   }
 
   addLineItem = (response) => {
-    console.log(response.amount)
+    // console.log(response.amount)
     const line_item = {
       product_id: response.product.id,
       order_id: this.state.currentOrder,
@@ -75,9 +76,11 @@ class ProductContainer extends Component {
 
     .then(response => {
       
-      let line_item_array = [];
-      line_item_array.push(response)
-      this.setState({line_items: line_item_array} )
+      // this.state.line_items +=1
+      this.setState({
+        line_item: response,
+        line_items: this.state.line_items++
+      } )
       //console.log(response);
     })
     .catch(error => console.log(error))
@@ -101,11 +104,9 @@ class ProductContainer extends Component {
   }
 
   renderOrder() {
-    console.log(this.state.line_items)
-    if(this.state.currentOrder !== null&&this.state.line_items){
-      return(<Order order={this.state.currentOrder} products={this.state.products} line_items={this.state.line_items}/>)
-    } else {
-      return null;
+    console.log(this.state.line_item)
+    if(this.state.currentOrder !== null){
+      return(<Order order={this.state.currentOrder} products={this.state.products} line_items={this.state.line_items} line_item={this.state.line_item}/>)
     }
   }
 
