@@ -1,0 +1,77 @@
+.App {
+  text-align: center;
+}
+
+/*
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}*/
+
+/*.App-title {
+  font-size: 1.5em;
+}*/
+
+.App-intro {
+  font-size: large;
+}
+
+.tile {
+  height: 150px;
+  width: 150px;
+  margin: 10px;
+  background: lightyellow;
+  float: left;
+  font-size: 11px;
+  text-align: left;
+}
+
+.newProductButton {
+  background: darkblue;
+  color: white;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  margin-right: 10px;
+  margin-left: 10px;
+  padding: 10px;
+}
+
+.input {
+  border: 0;
+  background: none;
+  outline: none;
+  margin-top: 10px;
+  width: 140px;
+  font-size: 11px;
+}
+
+.input:focus {
+  border: solid 1px lightgrey;
+}
+
+.delete-button {
+  visibility: hidden;
+  float: right;
+  margin: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  color: red;
+}
+
+.tile:hover .delete-button {
+  visibility: visible;
+}
+
+.order_table {
+  float: right;
+  height: 300px;
+  width: 20%;
+  border: 1px solid black;
+}
+
+.order_header {
+  text-align: inherit;
+}
